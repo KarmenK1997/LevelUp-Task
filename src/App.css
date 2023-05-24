@@ -1,5 +1,10 @@
-.App {
-  text-align: center;
+.invalid-label {
+  color: red;
+  margin: 0;
+  font-family: "Wix Madefor Display";
+  font-size: 14px;
+}
+
 }
 
 .App-logo {

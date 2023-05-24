@@ -1,6 +1,11 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 
+function ValidationInfo({ validity, field }) {
+  if (validity == false)
+    return <p className='invalid-label'>Invalid {field}</p>
+  return null
+}
 
 function App() {
   // useEffect(() => {
