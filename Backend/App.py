@@ -22,6 +22,14 @@ class CreditCard:
             self.vendor = "visa"
 
 def check_cvv(cvv, vendor):
+    if cvv is None:
+        return False
+    if not cvv.isdigit():
+        return False
+
+    if vendor is None:
+        return len(cvv) == 3 or len(cvv) == 4
+
     if len(cvv) == 4 and vendor == "amex":
         return True
     if len(cvv) == 3 and not vendor == "amex":
@@ -29,23 +37,28 @@ def check_cvv(cvv, vendor):
     return False
 
 def check_date(d):
+    if d is None:
+        return False
     n = datetime.now()
 
     if d >= n:
         return True
     return False
 
-def check_pan(pan):
-    range_pan = range(16, 19+1)
-    if len(pan) in range_pan:
-        return True
-    return False
-
 def check_luhn(input):
+    if input is None:
+        return False
+    
+    input = input.replace(" ", "") 
+ 
+    if len(input) <= 2 or not input.isdigit():
+        return False
+
     def digits_of(input):
         return [int(digit) for digit in str(input)]
 
     check_digit = int(input[-1])
+
     payload = input[0:-1]
 
     odd = payload[-2::-2]
@@ -62,6 +75,7 @@ def check_luhn(input):
 
     if check_digit == deduced_check_digit:
         return True
+    return False
 
 def check_cc(cc):
     if not check_cvv(cc.cvv, cc.vendor):
@@ -80,25 +94,18 @@ def check_cc(cc):
 
 @app.route("/validate", methods = ["POST"])
 def validate():
-    data = request.form
+    data = request.get_json()
 
     print(data)
 
-    date = data.get("date")
-
-    if not date:
-        return "No date!", 403
-
+    dateString = data.get("date")
     cvv = data.get("cvv")
-
-    if not cvv:
-        return "No cvv!", 403
-
     pan = data.get("pan")
 
-    if not pan:
-        return "No pan!", 403
-    
-    cc = CreditCard(datetime.strptime(data.get("date"), "%Y-%m-%d"), data.get("cvv"), data.get("pan"))
+    try:
+        date = datetime.strptime(dateString, "%Y-%m")
+    except:
+        date = None
+
 
     return {"valid": check_cc(cc)}
