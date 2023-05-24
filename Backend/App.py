@@ -10,16 +10,26 @@ CORS(app)
 def hello_world():
     return "hello world", 200
 
+def determine_vendor(pan):
+    if pan is None:
+        return None
+    pan = pan.replace(" ", "")
+    if not pan.isdigit():
+        return None
+    range_pan = range(16, 19+1)
+    if len(pan) not in range_pan:
+        return None
+    first_two = pan[0:2]
+    if first_two == "34" or first_two == "37":
+        return "amex"
+    return "visa"
+
 class CreditCard:
     def __init__(self, d, cvv, pan):
         self.date = d
         self.cvv = cvv
         self.pan = pan
-        thesebb = pan[0:2]
-        if thesebb == "34" or thesebb == "37":
-            self.vendor = "amex"
-        else:
-            self.vendor = "visa"
+        self.vendor = determine_vendor(pan)
 
 def check_cvv(cvv, vendor):
     if cvv is None:
@@ -84,7 +94,7 @@ def check_cc(cc):
     if not check_date(cc.date):
         print ("date")
         return False
-    if not check_pan(cc.pan):
+    if determine_vendor(cc.pan) is None:
         print ("pan")
         return False
     if not check_luhn(cc.pan):
@@ -107,5 +117,10 @@ def validate():
     except:
         date = None
 
+    cc = CreditCard(date, cvv, pan)
 
-    return {"valid": check_cc(cc)}
+    return {"date_valid": check_date(cc.date), 
+            "cvv_valid": check_cvv(cc.cvv, cc.vendor), 
+            "vendor": cc.vendor, 
+            "luhn_valid": check_luhn(cc.pan)
+    }
