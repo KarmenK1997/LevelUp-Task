@@ -30,7 +30,7 @@ function App() {
   const [pan, setPan] = useState("");
   const [date, setDate] = useState("");
 
-  async function submit(event) {
+  async function validate() {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -48,14 +48,16 @@ function App() {
     catch (e) {
       alert("Something went wrong!")
     }
-
-    event.preventDefault()
-
-  //   fetch("http://127.0.0.1:5000/validate", requestOptions)
-  //     .then(response => response.json())
-  //     .then(data => console.log(data));
   }
 
+  async function submit(event) {
+
+    validate();
+  }
+
+  useEffect(() => {
+    validate();
+  }, [pan, cvv, date])
 
   return (
     <div>
