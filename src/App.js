@@ -7,6 +7,23 @@ function ValidationInfo({ validity, field }) {
   return null
 }
 
+function CreditCard({ pan, cvv, date, vendor }) {
+  const sanitizedPan = pan?.replaceAll(" ", "");
+  let panSeparated = "";
+  for (let i = 0; i < sanitizedPan.length; i++) {
+    if (i > 0 && i % 4 == 0) {
+      panSeparated += " ";
+    }
+    panSeparated += sanitizedPan[i];
+  }
+  return <div className={'creditCard ' + vendor}>
+    <p className='CCPan'>{panSeparated}</p>
+    <p className='CCCvv'>{cvv}</p>
+    <p className="CCDate">{date}</p>
+    <p className="CCVendor">{vendor}</p>
+  </div>
+}
+
 function App() {
   const [validation, setValidation] = useState(null);
   const [cvv, setCvv] = useState("");
@@ -44,6 +61,7 @@ function App() {
     <div>
       <div className='main'>
         <div className='window'>
+          <CreditCard pan={pan} cvv={cvv} date={date} vendor={validation?.vendor} ></CreditCard>
           <form onSubmit={submit}>
             <div className='input-container'>
               <label htmlFor="pan">Pan</label>

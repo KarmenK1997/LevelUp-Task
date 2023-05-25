@@ -1,8 +1,48 @@
+.CCPan {
+  font-size: 17px;
+  font-weight: 600;
+  font-family: "Wix Madefor Display";
+  color: white;
+  position: absolute;
+  top: 12%;
+  left: 10%;
+}
+
+.CCVendor {
+  font-size: 17px;
+  font-weight: 600;
+  font-family: "Wix Madefor Display";
+  color: white;
+  position: absolute;
+  top: 60%;
+  left: 10%;
+}
+
+.CCCvv {
+  font-size: 17px;
+  font-weight: 600;
+  font-family: "Wix Madefor Display";
+  color: white;
+  position: absolute;
+  top: 35%;
+  left: 10%;
+}
+
 .invalid-label {
   color: red;
   margin: 0;
   font-family: "Wix Madefor Display";
   font-size: 14px;
+}
+
+.CCDate {
+  font-size: 17px;
+  font-weight: 600;
+  font-family: "Wix Madefor Display";
+  color: white;
+  position: absolute;
+  top: 35%;
+  left: 60%;
 }
 
 label {
