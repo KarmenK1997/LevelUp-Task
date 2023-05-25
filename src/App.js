@@ -53,6 +53,7 @@ function App() {
                 type="text"
                 id="pan"
                 name="pan"
+                style={{ borderColor: (validation?.pan_valid === false) ? "red" : "#909090" }}
               />
               <ValidationInfo validity={validation?.pan_valid} field="pan" />
             </div>
@@ -64,6 +65,7 @@ function App() {
                 type="text"
                 id="cvv"
                 name="cvv"
+                style={{ borderColor: (validation?.cvv_valid === false) ? "red" : "#909090" }}
               />
               <ValidationInfo validity={validation?.cvv_valid} field="cvv" />
             </div>
@@ -74,6 +76,8 @@ function App() {
                 type="month"
                 id="date"
                 name="date"
+                style={{ borderColor: (validation?.date_valid === false) ? "red" : "#909090" }}
+              />
               <ValidationInfo validity={validation?.date_valid} field="date of expiry" /></div>
             <input className="submit" type="submit" value="Submit"></input>
           </form>
