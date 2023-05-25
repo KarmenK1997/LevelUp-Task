@@ -53,6 +53,10 @@ function App() {
                 type="text"
                 id="pan"
                 name="pan"
+                inputmode="numeric"
+                autocomplete="cc-number"
+                maxLength="19"
+                placeholder='xxxx xxxx xxxx xxxx'
                 style={{ borderColor: (validation?.pan_valid === false) ? "red" : "#909090" }}
               />
               <ValidationInfo validity={validation?.pan_valid} field="pan" />
