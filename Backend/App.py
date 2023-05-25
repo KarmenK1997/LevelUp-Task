@@ -58,9 +58,9 @@ def check_date(d):
 def check_luhn(input):
     if input is None:
         return False
-    
-    input = input.replace(" ", "") 
- 
+
+    input = input.replace(" ", "")
+
     if len(input) <= 2 or not input.isdigit():
         return False
 
@@ -119,8 +119,9 @@ def validate():
 
     cc = CreditCard(date, cvv, pan)
 
-    return {"date_valid": check_date(cc.date), 
-            "cvv_valid": check_cvv(cc.cvv, cc.vendor), 
-            "vendor": cc.vendor, 
-            "luhn_valid": check_luhn(cc.pan)
+    return {
+        "date_valid": check_date(cc.date),
+        "cvv_valid": check_cvv(cc.cvv, cc.vendor),
+        "vendor": cc.vendor,
+        "luhn_valid": check_luhn(cc.pan)
     }

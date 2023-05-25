@@ -68,5 +68,3 @@ class MyTest(unittest.TestCase):
         assert check_cc(CreditCard(datetime(2030, 2, 2), "1234", "34123426387253675")) == True
         assert check_cc(CreditCard(datetime(2030, 2, 2), "1234", "abchsifjzsncijdt")) == False
         assert check_cc(CreditCard(datetime(2030, 2, 2), "jjhg", "34123426387253675")) == False
-  
-

@@ -4,10 +4,43 @@
   box-sizing: border-box;
 }
 
+body {
+  height: 100vh;
+  background: rgb(221, 234, 235);
+  background: linear-gradient(
+    0deg,
+    rgba(221, 234, 235, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
+  row-gap: 35px;
+  background-color: #ffffff;
+  min-height: 500px;
+  width: 80%;
+  max-width: 550px;
+  padding-top: 70px;
+  padding-bottom: 80px;
+  border-radius: 11px;
+  background: #ffffff;
+  box-shadow: 15px 15px 70px #c9c9c9, -15px -15px 70px #ffffff;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .CCPan {
   font-size: 17px;
   font-weight: 600;
-  font-family: "Wix Madefor Display";
+  font-family: 'Wix Madefor Display';
   color: white;
   position: absolute;
   top: 12%;
@@ -17,7 +50,7 @@
 .CCVendor {
   font-size: 17px;
   font-weight: 600;
-  font-family: "Wix Madefor Display";
+  font-family: 'Wix Madefor Display';
   color: white;
   position: absolute;
   top: 60%;
@@ -27,20 +60,29 @@
 .CCCvv {
   font-size: 17px;
   font-weight: 600;
-  font-family: "Wix Madefor Display";
+  font-family: 'Wix Madefor Display';
   color: white;
   position: absolute;
   top: 35%;
   left: 10%;
 }
 
+.CCDate {
+  font-size: 17px;
+  font-weight: 600;
+  font-family: 'Wix Madefor Display';
+  color: white;
+  position: absolute;
+  top: 35%;
+  left: 60%;
+}
+
 .invalid-label {
   color: red;
   margin: 0;
-  font-family: "Wix Madefor Display";
+  font-family: 'Wix Madefor Display';
   font-size: 14px;
 }
-
 
 @property --c1 {
   syntax: '<color>';
@@ -56,7 +98,7 @@
 
 .creditCard {
   width: 250px;
-  aspect-ratio: calc(85.6/54);
+  aspect-ratio: calc(85.6 / 54);
   border: 1px;
   border-radius: 10px;
   background: rgb(92, 82, 76);
@@ -65,7 +107,6 @@
   background: linear-gradient(60deg, var(--c1), var(--c2) 100%);
   transition: --c1 0.9s, --c2 0.9s;
 }
-
 
 .creditCard.amex {
   --c1: rgba(103, 109, 93, 1);
@@ -78,66 +119,15 @@
   opacity: 1;
 }
 
-
-.CCDate {
-  font-size: 17px;
-  font-weight: 600;
-  font-family: "Wix Madefor Display";
-  color: white;
-  position: absolute;
-  top: 35%;
-  left: 60%;
-}
-
 label {
-  font-family: "Wix Madefor Display";
+  font-family: 'Wix Madefor Display';
   font-size: 13px;
   font-weight: 700;
   color: #000000b2;
 }
 
 .date {
-  font-family: "Wix Madefor Display";
-}
-
-.date .submit {
-  font-family: "Wix Madefor Display";
-  display: flex;
-  align-self: center;
-  position: relative;
-  border-radius: 30px;
-  border: none;
-}
-
-body {
-  height: 100vh;
-  background: rgb(221, 234, 235);
-  background: linear-gradient(0deg, rgba(221, 234, 235, 1) 0%, rgba(255, 255, 255, 1) 100%);
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-}
-
-.window {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 70px;
-  row-gap: 35px;
-  background-color: #ffffff;
-  min-height: 500px;
-  width: 80%;
-  max-width: 550PX;
-  padding-top: 70px;
-  padding-bottom: 80px;
-  border-radius: 11px;
-  background: #ffffff;
-  box-shadow: 15px 15px 70px #c9c9c9,
-    -15px -15px 70px #ffffff;
+  font-family: 'Wix Madefor Display';
 }
 
 form {
@@ -147,8 +137,6 @@ form {
   align-items: center;
 }
 
-
-
 .input-container input {
   border-style: solid;
   border-width: 1px;
@@ -157,10 +145,9 @@ form {
   height: 30px;
   width: 200px;
   background: #ffffff;
-  box-shadow: inset 3px 3px 8px #d4d4d4,
-    inset -3px -3px 8px #ffffff;
+  box-shadow: inset 3px 3px 8px #d4d4d4, inset -3px -3px 8px #ffffff;
   padding: 4px 8px;
-  font-family: "Wix Madefor Display";
+  font-family: 'Wix Madefor Display';
 }
 
 .input-container {
@@ -186,7 +173,6 @@ form {
   }
 
   @media only screen and (max-width: 300px) {
-
     .window {
       width: 100%;
       margin-top: 0;
@@ -217,6 +203,5 @@ form {
     .CCDate {
       font-size: 14px;
     }
-
   }
 }
