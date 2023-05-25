@@ -35,6 +35,44 @@
   font-size: 14px;
 }
 
+
+@property --c1 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: rgba(92, 82, 76, 1);
+}
+
+@property --c2 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: rgba(226, 219, 216, 1);
+}
+
+.creditCard {
+  width: 250px;
+  aspect-ratio: calc(85.6/54);
+  border: 1px;
+  border-radius: 10px;
+  background: rgb(92, 82, 76);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(60deg, var(--c1), var(--c2) 100%);
+  transition: --c1 0.9s, --c2 0.9s;
+}
+
+
+.creditCard.amex {
+  --c1: rgba(103, 109, 93, 1);
+  --c2: rgba(198, 202, 146, 1);
+}
+
+.creditCard.visa {
+  --c1: rgba(61, 72, 73, 1);
+  --c2: rgba(141, 205, 204, 1);
+  opacity: 1;
+}
+
+
 .CCDate {
   font-size: 17px;
   font-weight: 600;
