@@ -1,6 +1,8 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 
+const apiUrl = "http://127.0.0.1:5000"
+
 function ValidationInfo({ validity, field }) {
   if (validity == false) return <p className='invalid-label'>Invalid {field}</p>
   return null
@@ -41,9 +43,8 @@ function App() {
     }
 
     try {
-      fetch('http://127.0.0.1:5000/validate', requestOptions)
       const response = await fetch(
-        'http://127.0.0.1:5000/validate',
+        `${apiUrl}/validate`,
         requestOptions
       )
 
@@ -83,8 +84,8 @@ function App() {
                 type='text'
                 id='pan'
                 name='pan'
-                inputmode='numeric'
-                autocomplete='cc-number'
+                inputMode='numeric'
+                autoComplete='cc-number'
                 maxLength='19'
                 placeholder='xxxx xxxx xxxx xxxx'
                 style={{
