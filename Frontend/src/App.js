@@ -103,6 +103,9 @@ function App() {
                 type='text'
                 id='cvv'
                 name='cvv'
+                inputMode='numeric'
+                autoComplete='cc-csc'
+                maxLength='4'
                 style={{
                   borderColor:
                     validation?.cvv_valid === false ? 'red' : '#909090'
