@@ -90,10 +90,10 @@ function App() {
                 placeholder='xxxx xxxx xxxx xxxx'
                 style={{
                   borderColor:
-                    validation?.pan_valid === false ? 'red' : '#909090'
+                    validation?.vendor === null || validation?.luhn_valid === false ? 'red' : '#909090'
                 }}
               />
-              <ValidationInfo validity={validation?.pan_valid} field='pan' />
+              <ValidationInfo validity={validation?.vendor} field='pan' />
             </div>
             <div className='input-container'>
               <label htmlFor='cvv'>CVV</label>
